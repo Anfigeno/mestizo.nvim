@@ -1,27 +1,136 @@
-# Atlantic-Dark.nvim
+# Mestizo.nvim
 
-Atlantic-Dark.nvim is a Lua port of [atlantic-dark.vim](https://github.com/sfi0zy/atlantic-dark.vim), with a few minor tweaks to adapt it to my personal taste and to better adapt to Neovim UI elements (like popups etc...).
+![Vista general](./recursos/vista_general.png "Vista general")
 
-## Installation
+Este plugin es una implementación de la paleta Mestizo para Neovim.
 
-### Using `lazy.nvim`
+> [!WARNING]
+> Este tema está diseñado para ser usado con diferentes tipos de fuente para cada estilo de fuente (normal, italica, negrita, italica negrita).
 
-You can install using `lazy.nvim` by simply adding:
+> [!INFO]
+> Las fuentes que ven en las capturas son:
+> - Normal: Monaspace Neon Medium
+> - Negrita: Monaspace Krypton Medium
+> - Italica: Monaspace Radon Medium
+> - Italica negrita: Monaspace Xenon Medium
+
+## Instalación con `lazy.nvim`
+
+Puedes instalar este tema simplemente con
 
 ```lua
 {
-    "L-Colombo/atlantic-dark.nvim"
+    "Anfigeno/mestizo.nvim"
 }
 ```
 
-The color scheme can then be loaded by setting in your configuration `vim.cmd([[colorscheme atlantic-dark]])`.
+Luego de eso podrás usar el tema con el comando `:colorscheme mestizo` o añadiendolo a tu configuración con `vim.cmd.colorscheme("mestizo")`
 
-## Roadmap
+## Integraciones
 
-The colorscheme is, at the moment, quite bare-bone. In the future the plugin support and TreeSitter support will be expanded.
+![Integraciones](./recursos/integraciones.png "Integraciones")
 
-## Gallery
+Mestizo.nvim tiene integraciones para los siguientes plugins:
 
-![C header file](./assets/c.png "C header file")
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [nvim-navbuddy](https://github.com/SmiteshP/nvim-navbuddy)
+- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
 
-![JavaScript React](./assets/react.png "JavaScript React")
+Las cuales se identifican con la siguiente lista
+
+```lua
+M.integraciones = {
+	"bufferline",
+	"cmp",
+	"dashboard",
+	"gitsigns",
+	"navbuddy",
+	"neo_tree",
+	"noice",
+	"notify",
+	"rainbow_delimiters",
+	"telescope",
+	"trouble",
+}
+```
+
+Y puedes añadir las integraciones que quieras de la siguiente forma
+
+```lua
+{
+    "Anfigeno/mestizo.nvim",
+    config = function()
+        require("mestizo").establecer({
+            integraciones = {
+                "bufferline",
+                -- Y las demás integraciones que quieras
+            }
+        })
+    end
+}
+```
+
+O puedes activar todas las integraciones
+
+```lua
+{
+    "Anfigeno/mestizo.nvim",
+    config = function()
+        local mestizo = require("mestizo")
+
+        mestizo.establecer({
+            integraciones = mestizo.integraciones,
+        })
+    end
+}
+```
+
+## Extras
+
+Este tema viene un extra, el cual hace que la barra de estado desaparezca y se vea minimalista cuando sea visible. Los extras se identifican con la siguiente lista:
+
+```lua
+M.extras {
+    "barra_minimalista",
+}
+```
+
+Puede añadir el extra usando su strint
+
+```lua
+{
+    "Anfigeno/mestizo.nvim",
+    config = function()
+        require("mestizo").establecer({
+            extras = "barra_minimalista"
+        })
+    end
+}
+```
+
+O puede añadir todos los extras, usando la tabla de extras.
+
+```lua
+{
+    "Anfigeno/mestizo.nvim",
+    config = function()
+        local mestizo = require("mestizo")
+
+        mestizo.establecer({
+            extras = mestizo.extras
+        })
+    end
+}
+```
+
+## Notas
+
+Eso es todo :)
