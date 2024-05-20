@@ -7,8 +7,9 @@ Este plugin es una implementación de la paleta Mestizo para Neovim.
 > [!WARNING]
 > Este tema está diseñado para ser usado con diferentes tipos de fuente para cada estilo de fuente (normal, italica, negrita, italica negrita).
 
-> [!INFO]
+> [!NOTE]
 > Las fuentes que ven en las capturas son:
+>
 > - Normal: Monaspace Neon Medium
 > - Negrita: Monaspace Krypton Medium
 > - Italica: Monaspace Radon Medium
