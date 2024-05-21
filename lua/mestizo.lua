@@ -1,5 +1,6 @@
 local M = {}
 
+---@type Colores
 local colores = {
 	rojo = "#ff5263",
 	verde = "#8eeda1",
@@ -161,6 +162,7 @@ M.integraciones = {
 	"rainbow_delimiters",
 	"telescope",
 	"trouble",
+	"web_devicons",
 }
 
 M.extras = {
