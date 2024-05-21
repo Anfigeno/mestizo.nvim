@@ -31,9 +31,8 @@ Luego de eso podrás usar el tema con el comando `:colorscheme mestizo` o añadi
 
 ![Integraciones](./recursos/integraciones.png "Integraciones")
 
-> ![NOTE]
-> Ahora con soporte para nvim-web-devicons!
-> ![nvim-web-devicons](./recursos/web_devicons.png "nvim-web-devicons")
+Ahora con soporte para nvim-web-devicons!
+![nvim-web-devicons](./recursos/web_devicons.png "nvim-web-devicons")
 
 Mestizo.nvim tiene integraciones para los siguientes plugins:
 
