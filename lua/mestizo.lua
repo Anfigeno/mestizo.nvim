@@ -31,6 +31,8 @@ local colores = {
 }
 
 M.groups = {
+	Winbar = { fg = colores.sombra, bg = colores.base },
+	WinbarNC = { fg = colores.sombra, bg = colores.base },
 	EndOfBuffer = { fg = colores.base },
 	Boolean = { fg = colores.naranja },
 	NormalFloat = { bg = colores.base },
@@ -62,8 +64,8 @@ M.groups = {
 	Directory = { fg = colores.azul },
 	Error = { fg = colores.rojo, bg = colores.base },
 	ErrorMsg = { fg = colores.rojo, bg = colores.base },
-	FoldColumn = { fg = colores.azul, bg = colores.magenta },
-	Folded = { fg = colores.azul, bg = colores.magenta },
+	FoldColumn = { fg = colores.rojo, bg = colores.base },
+	Folded = { fg = colores.tope, bg = colores.sombra },
 	IncSearch = { fg = colores.tope, bg = colores.viento },
 	LineNr = { fg = colores.nube },
 	MatchParen = { fg = colores.tope, bg = colores.nube },
@@ -163,6 +165,7 @@ M.integraciones = {
 	"telescope",
 	"trouble",
 	"web_devicons",
+	"edgy",
 }
 
 M.extras = {

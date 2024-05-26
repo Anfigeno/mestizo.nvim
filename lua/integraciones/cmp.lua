@@ -31,6 +31,7 @@ function M.obtener(colores)
 		CmpItemKindUnit = { fg = colores.vacio, bg = colores.magenta },
 		CmpItemKindSnippet = { fg = colores.vacio, bg = colores.magenta },
 		CmpItemKindFolder = { fg = colores.vacio, bg = colores.magenta },
+		CmpItemKindSupermaven = { fg = colores.vacio, bg = colores.magenta },
 
 		CmpItemKindMethod = { fg = colores.vacio, bg = colores.cian },
 		CmpItemKindValue = { fg = colores.vacio, bg = colores.cian },

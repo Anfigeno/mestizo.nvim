@@ -53,6 +53,8 @@ function M.obtener(colores)
 		BufferlineNumbers = { bg = colores.base },
 		BufferlineGroupSeparator = { bg = colores.base },
 		BufferlineDuplicate = { fg = colores.nube, bg = colores.base },
+
+		BufferlineOffsetSeparator = { fg = colores.sombra, bg = colores.base },
 	}
 end
 
