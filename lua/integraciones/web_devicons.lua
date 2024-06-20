@@ -7,6 +7,8 @@ local claves_hl_web_devicons = {
 		"Pdf",
 		"Rb",
 		"PackageJson",
+		"Scss",
+		"Sass",
 	},
 	verde = {
 		"Zsh",

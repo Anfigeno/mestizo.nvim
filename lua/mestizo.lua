@@ -16,19 +16,22 @@ local colores = {
 	fucsia = "#e4adff",
 	turquesa = "#6ac6fc",
 
-	luz = "#d7ddfc",
-	tope = "#bcc3e8",
-	reflejo = "#9ca8dd",
+	luz = "#edeff8",
+	tope = "#bbc3e8",
+	reflejo = "#9ca8da",
 
-	viento = "#888daa",
-	nube = "#494d69",
-	contaminacion = "#34374b",
-	humo = "#2a2c3c",
+	viento = "#818bb3",
+	nube = "#6f779e",
+	vapor = "#565c81",
+	contaminacion = "#434865",
+	humo = "#292c3d",
 
-	base = "#222430",
+	base = "#1e1f2a",
 	sombra = "#191b24",
 	vacio = "#111218",
 }
+
+local util = require("util")
 
 M.groups = {
 	Winbar = { fg = colores.sombra, bg = colores.base },
@@ -37,21 +40,41 @@ M.groups = {
 	Boolean = { fg = colores.naranja },
 	NormalFloat = { bg = colores.base },
 	DiagnosticUnderlineError = { sp = colores.rojo, underline = true },
-	DiagnosticError = { fg = colores.rojo, bg = "#362835", italic = true, bold = true },
-	DiagnosticWarn = { fg = colores.amarillo, bg = "#363637", italic = true, bold = true },
+	DiagnosticError = {
+		fg = colores.rojo,
+		bg = util.mezclar_colores(colores.base, colores.rojo, 0.1),
+		italic = true,
+		bold = true,
+	},
+	DiagnosticWarn = {
+		fg = colores.amarillo,
+		bg = util.mezclar_colores(colores.base, colores.amarillo, 0.1),
+		italic = true,
+		bold = true,
+	},
 	DiagnosticUnderlineWarn = { sp = colores.amarillo, underline = true },
-	DiagnosticHint = { fg = colores.cian, bg = "#283543", italic = true, bold = true },
+	DiagnosticHint = {
+		fg = colores.cian,
+		bg = util.mezclar_colores(colores.base, colores.cian, 0.1),
+		italic = true,
+		bold = true,
+	},
 	DiagnosticUnderlineHint = { sp = colores.cian, underline = true },
-	DiagnosticInfo = { fg = colores.verde, bg = "#2c363a", italic = true, bold = true },
+	DiagnosticInfo = {
+		fg = colores.verde,
+		bg = util.mezclar_colores(colores.base, colores.verde, 0.1),
+		italic = true,
+		bold = true,
+	},
 	DiagnosticUnderlineInfo = { sp = colores.verde, underline = true },
 	String = { fg = colores.verde },
-	Delimiter = { fg = colores.viento },
+	Delimiter = { fg = colores.nube },
 	Keyword = { fg = colores.magenta, italic = true },
 	Identifier = { fg = colores.tope, bold = true },
 	Function = { fg = colores.azul, nocombine = true },
 	Conceal = { fg = colores.tope },
 	Comment = { fg = colores.viento, italic = true, bold = true },
-	Constant = { fg = colores.lima },
+	Constant = { fg = colores.naranja },
 	Cursor = { fg = colores.vacio, bg = colores.azul },
 	CursorColumn = { fg = colores.tope, bg = colores.humo },
 	CursorLine = { bg = colores.humo },
@@ -67,7 +90,7 @@ M.groups = {
 	FoldColumn = { fg = colores.rojo, bg = colores.base },
 	Folded = { fg = colores.tope, bg = colores.sombra },
 	IncSearch = { fg = colores.tope, bg = colores.viento },
-	LineNr = { fg = colores.nube },
+	LineNr = { fg = colores.contaminacion },
 	MatchParen = { fg = colores.tope, bg = colores.nube },
 	ModeMsg = { fg = colores.tope },
 	MoreMsg = { fg = colores.tope },
@@ -131,6 +154,8 @@ M.groups = {
 	["@parameter"] = { fg = colores.rojo },
 	["@lsp.type.selfKeyword"] = { fg = colores.rojo },
 	["@lsp.type.interface"] = { fg = colores.fucsia },
+	["@lsp.type.modifier.java"] = { link = "Keyword" },
+	["@lsp.type.namespace.java"] = { fg = colores.tope },
 	["@constructor"] = { fg = colores.lima },
 }
 
@@ -166,6 +191,7 @@ M.integraciones = {
 	"trouble",
 	"web_devicons",
 	"edgy",
+	"diffview",
 }
 
 M.extras = {

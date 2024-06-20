@@ -44,6 +44,9 @@ function M.obtener(colores)
 
 		BufferlineTab = { fg = colores.nube, bg = colores.base },
 		BufferlineTabSelected = { fg = colores.tope, bg = colores.base },
+		BufferLineTabClose = { fg = colores.rojo, bg = colores.base },
+		BufferLineTabSeparator = { fg = colores.base, bg = colores.base },
+		BufferLineTabSeparatorSelected = { fg = colores.rojo, bg = colores.base },
 
 		BufferlineCloseButton = { fg = colores.nube, bg = colores.base },
 		BufferlineCloseButtonVisible = { fg = colores.rojo, bg = colores.base },
