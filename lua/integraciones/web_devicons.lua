@@ -9,6 +9,7 @@ local claves_hl_web_devicons = {
 		"PackageJson",
 		"Scss",
 		"Sass",
+		"PrettierConfig",
 	},
 	verde = {
 		"Zsh",

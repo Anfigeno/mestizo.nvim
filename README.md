@@ -31,9 +31,6 @@ Luego de eso podrás usar el tema con el comando `:colorscheme mestizo` o añadi
 
 ![Integraciones](./recursos/integraciones.png "Integraciones")
 
-Ahora con soporte para nvim-web-devicons!
-![nvim-web-devicons](./recursos/web_devicons.png "nvim-web-devicons")
-
 Mestizo.nvim tiene integraciones para los siguientes plugins:
 
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
@@ -48,6 +45,9 @@ Mestizo.nvim tiene integraciones para los siguientes plugins:
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [trouble.nvim](https://github.com/folke/trouble.nvim)
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [edgy.nvim](https://github.com/folke/edgy.nvim)
+- [diffview.nvim](https://github.com/sindrets/diffview.nvim)
+- [lspkind.nvim](https://github.com/onsails/lspkind-nvim)
 
 Las cuales se identifican con la siguiente lista
 
@@ -64,7 +64,10 @@ M.integraciones = {
 	"rainbow_delimiters",
 	"telescope",
 	"trouble",
-    "web_devicons",
+	"web_devicons",
+	"edgy",
+	"diffview",
+	"lspkind",
 }
 ```
 

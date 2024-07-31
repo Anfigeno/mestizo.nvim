@@ -2,48 +2,55 @@ local M = {}
 
 local colores_y_claves = {
 	luz = {
-		"NormalFloat",
 		"Event",
-	},
-	amarillo = {
-		"Class",
-		"Enum",
-		"Reference",
-	},
-	magenta = {
-		"Module",
-		"Keyword",
-	},
-	rojo = {
-		"Operator",
-	},
-	rosa = {
-		"Variable",
-	},
-	azul = {
-		"Function",
+		"Color",
 	},
 	verde = {
 		"Text",
 	},
-	celeste = {
-		"Field",
-		"Property",
+	rojo = {
+		"Operator",
+		"Parameter",
+	},
+	azul = {
+		"Function",
 	},
 	naranja = {
 		"Constant",
 		"File",
 		"EnumMember",
 	},
+	celeste = {
+		"Property",
+		"Supermaven",
+		"Field",
+	},
 	cian = {
 		"Method",
+		"Codeium",
 		"Value",
 	},
-	fucsia = {
-		"Interface",
+	magenta = {
+		"Keyword",
+		"Module",
+		"Unit",
+		"Snippet",
+	},
+	amarillo = {
+		"Class",
+		"Enum",
+		"Reference",
 	},
 	lima = {
 		"Constructor",
+	},
+	fucsia = {
+		"Interface",
+		"Struct",
+	},
+	rosa = {
+		"Folder",
+		"Variable",
 	},
 }
 
@@ -53,10 +60,11 @@ function M.obtener(colores)
 
 	for color, clave in pairs(colores_y_claves) do
 		for _, hl in ipairs(clave) do
-			grupos["NavBuddy" .. hl] = { fg = colores[color], bg = "NONE" }
+			grupos["CmpItemKind" .. hl] = { fg = colores.base, bg = colores[color] }
 		end
 	end
 
 	return grupos
 end
+
 return M

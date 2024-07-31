@@ -33,7 +33,8 @@ local colores = {
 
 local util = require("util")
 
-M.groups = {
+M.grupos = {
+	CodeBlock = { bg = colores.sombra },
 	Winbar = { fg = colores.sombra, bg = colores.base },
 	WinbarNC = { fg = colores.sombra, bg = colores.base },
 	EndOfBuffer = { fg = colores.base },
@@ -139,11 +140,19 @@ M.groups = {
 	["@property"] = { fg = colores.celeste, nocombine = true },
 	["@method"] = { fg = colores.azul },
 	["@markup.bold"] = { bold = true },
-	["@markup.heading"] = { fg = colores.azul, bold = true },
+	["@markup.heading"] = { fg = colores.cian, bold = true },
+	["@markup.heading.2.markdown"] = {
+		fg = util.mezclar_colores(colores.cian, colores.azul, 0.5),
+		bold = true,
+	},
+	["@markup.heading.3.markdown"] = { fg = colores.azul, bold = true },
 	["@markup.italic"] = { italic = true },
 	["@markup.link.label"] = { fg = colores.cian },
 	["@markup.link.url"] = { fg = colores.azul, underline = true, italic = true },
 	["@markup.strong"] = { bold = true },
+	["@markup.italic.markdown_inline"] = { italic = true, fg = colores.celeste },
+	["@markup.strong.markdown_inline"] = { bold = true, fg = colores.lima },
+	["@markup.raw.block.markdown"] = { bg = colores.sombra },
 	["@punctuation.bracket"] = { fg = colores.rosa, bold = true },
 	["@tag"] = { fg = colores.rojo },
 	["@tag.attribute"] = { fg = colores.naranja },
@@ -161,7 +170,7 @@ M.groups = {
 
 M.agregar = function(diccionario)
 	for clave, valor in pairs(diccionario) do
-		M.groups[clave] = valor
+		M.grupos[clave] = valor
 	end
 end
 
@@ -192,6 +201,7 @@ M.integraciones = {
 	"web_devicons",
 	"edgy",
 	"diffview",
+	"lspkind",
 }
 
 M.extras = {
@@ -215,7 +225,7 @@ M.establecer = function(configuracion)
 	vim.g.colors_name = "mestizo"
 	vim.o.termguicolors = true
 
-	for group, opts in pairs(M.groups) do
+	for group, opts in pairs(M.grupos) do
 		vim.api.nvim_set_hl(0, group, opts)
 	end
 end

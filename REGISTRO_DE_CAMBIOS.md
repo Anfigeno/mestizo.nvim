@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## [1.3] - 31/07/2024
+
+### Integraciones
+
+- Agregado: edgy.nvim y lspkind.nvim.
+
 ## [1.2] - 19/06/2024
 
 ### Paleta de colores
