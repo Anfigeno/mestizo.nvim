@@ -1,4 +1,4 @@
-local util = require("util")
+local util = require("mestizo.util")
 local M = {}
 
 ---@param colores Colores

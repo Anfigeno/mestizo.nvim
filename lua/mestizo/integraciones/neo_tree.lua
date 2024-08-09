@@ -9,6 +9,8 @@ function M.obtener(colores)
 		NeoTreeRootName = { fg = colores.rosa, bg = colores.base },
 		NeoTreeFloatTitle = { fg = colores.rojo },
 		NeoTreeGitUntracked = { fg = colores.lima },
+		NeoTreeGitConflict = { fg = colores.naranja },
+		NeoTreeIndentMarker = { fg = colores.humo },
 	}
 end
 

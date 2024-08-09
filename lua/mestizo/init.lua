@@ -133,7 +133,7 @@ end
 
 M.agregar_integraciones = function(integraciones)
 	for _, valor in ipairs(integraciones) do
-		M.agregar(require("integraciones." .. valor).obtener(colores))
+		M.agregar(require("mestizo.integraciones." .. valor).obtener(colores))
 	end
 end
 
@@ -146,13 +146,13 @@ M.agregar_lsp = function()
 	}
 
 	for _, valor in ipairs(lsps) do
-		M.agregar(require("lsp." .. valor).obtener(colores))
+		M.agregar(require("mestizo.lsp." .. valor).obtener(colores))
 	end
 end
 
 M.establecer_extras = function(extras)
 	for _, valor in ipairs(extras) do
-		require("extras." .. valor).establecer()
+		require("mestizo.extras." .. valor).establecer()
 	end
 end
 

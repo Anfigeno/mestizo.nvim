@@ -1,11 +1,24 @@
 # Registro de cambios
 
+## [1.5] 09/08/2024
+
+### Estructura de archivos
+
+Se ha movido el contenido de la carpeta `lua/` hacia la carpeta `lua/mestizo/`.
+
+### Integraciones
+
+- Agregado:
+  - nvim-neo-tree.nvim:
+    - Claves: NeoTreeGitConflict y NeoTreeIndentMarker.
+
 ## [1.4] 09/08/2024
 
 ### Integraciones
 
-- Agregado: markview.nvim y outline.nvim.
-- Modificado:
+- Agregado:
+  - markview.nvim.
+  - outline.nvim.
   - trouble.nvim:
     - Claves agregadas: TroubleIconField, TroubleIconDirectory y TroubleCount.
 
