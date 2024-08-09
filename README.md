@@ -48,6 +48,8 @@ Mestizo.nvim tiene integraciones para los siguientes plugins:
 - [edgy.nvim](https://github.com/folke/edgy.nvim)
 - [diffview.nvim](https://github.com/sindrets/diffview.nvim)
 - [lspkind.nvim](https://github.com/onsails/lspkind-nvim)
+- [outline.nvim](https://github.com/hedyhli/outline.nvim)
+- [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
 
 Las cuales se identifican con la siguiente lista
 
@@ -68,6 +70,8 @@ M.integraciones = {
 	"edgy",
 	"diffview",
 	"lspkind",
+    "outline",
+    "markview",
 }
 ```
 

@@ -31,8 +31,6 @@ local colores = {
 	vacio = "#111218",
 }
 
-local util = require("util")
-
 M.grupos = {
 	CodeBlock = { bg = colores.sombra },
 	Winbar = { fg = colores.sombra, bg = colores.base },
@@ -43,27 +41,23 @@ M.grupos = {
 	DiagnosticUnderlineError = { sp = colores.rojo, underline = true },
 	DiagnosticError = {
 		fg = colores.rojo,
-		bg = util.mezclar_colores(colores.base, colores.rojo, 0.1),
 		italic = true,
 		bold = true,
 	},
 	DiagnosticWarn = {
 		fg = colores.amarillo,
-		bg = util.mezclar_colores(colores.base, colores.amarillo, 0.1),
 		italic = true,
 		bold = true,
 	},
 	DiagnosticUnderlineWarn = { sp = colores.amarillo, underline = true },
 	DiagnosticHint = {
 		fg = colores.cian,
-		bg = util.mezclar_colores(colores.base, colores.cian, 0.1),
 		italic = true,
 		bold = true,
 	},
 	DiagnosticUnderlineHint = { sp = colores.cian, underline = true },
 	DiagnosticInfo = {
 		fg = colores.verde,
-		bg = util.mezclar_colores(colores.base, colores.verde, 0.1),
 		italic = true,
 		bold = true,
 	},
@@ -85,7 +79,7 @@ M.grupos = {
 	DiffChange = { fg = colores.tope, bg = colores.vacio },
 	DiffDelete = { fg = colores.azul, bg = colores.vacio },
 	DiffText = { fg = colores.amarillo, bg = colores.vacio },
-	Directory = { fg = colores.azul },
+	Directory = { fg = colores.rosa },
 	Error = { fg = colores.rojo, bg = colores.base },
 	ErrorMsg = { fg = colores.rojo, bg = colores.base },
 	FoldColumn = { fg = colores.rojo, bg = colores.base },
@@ -118,7 +112,7 @@ M.grupos = {
 	TabLine = { fg = colores.tope, bg = colores.magenta },
 	TabLineFill = { fg = colores.vacio, bg = colores.tope },
 	TabLineSel = { fg = colores.tope },
-	Title = { fg = colores.tope },
+	Title = { fg = colores.rojo },
 	Todo = { fg = colores.cian, bg = colores.vacio },
 	Type = { fg = colores.amarillo },
 	Underlined = { fg = colores.azul },
@@ -129,43 +123,6 @@ M.grupos = {
 	WinSeparator = { fg = colores.sombra, bg = colores.base },
 	FloatBorder = { fg = colores.rojo, bg = colores.base, nocombine = true },
 	FloatTitle = { fg = colores.rojo, bg = colores.base },
-
-	-- LSP
-	["@variable"] = { link = "Identifier" },
-	["@variable.parameter"] = { fg = colores.rosa },
-	["@variable.builtin"] = { fg = colores.rojo },
-	["@function.call"] = { link = "Function" },
-	["@function.method.call"] = { link = "Function" },
-	["@function.method"] = { link = "Function" },
-	["@property"] = { fg = colores.celeste, nocombine = true },
-	["@method"] = { fg = colores.azul },
-	["@markup.bold"] = { bold = true },
-	["@markup.heading"] = { fg = colores.cian, bold = true },
-	["@markup.heading.2.markdown"] = {
-		fg = util.mezclar_colores(colores.cian, colores.azul, 0.5),
-		bold = true,
-	},
-	["@markup.heading.3.markdown"] = { fg = colores.azul, bold = true },
-	["@markup.italic"] = { italic = true },
-	["@markup.link.label"] = { fg = colores.cian },
-	["@markup.link.url"] = { fg = colores.azul, underline = true, italic = true },
-	["@markup.strong"] = { bold = true },
-	["@markup.italic.markdown_inline"] = { italic = true, fg = colores.celeste },
-	["@markup.strong.markdown_inline"] = { bold = true, fg = colores.lima },
-	["@markup.raw.block.markdown"] = { bg = colores.sombra },
-	["@punctuation.bracket"] = { fg = colores.rosa, bold = true },
-	["@tag"] = { fg = colores.rojo },
-	["@tag.attribute"] = { fg = colores.naranja },
-	["@tag.delimiter"] = { fg = colores.nube },
-	["@keyword.export"] = { fg = colores.cian },
-	["@string.escape"] = { fg = colores.fucsia, italic = true },
-	["@string"] = { fg = colores.verde, italic = true },
-	["@parameter"] = { fg = colores.rojo },
-	["@lsp.type.selfKeyword"] = { fg = colores.rojo },
-	["@lsp.type.interface"] = { fg = colores.fucsia },
-	["@lsp.type.modifier.java"] = { link = "Keyword" },
-	["@lsp.type.namespace.java"] = { fg = colores.tope },
-	["@constructor"] = { fg = colores.lima },
 }
 
 M.agregar = function(diccionario)
@@ -177,6 +134,19 @@ end
 M.agregar_integraciones = function(integraciones)
 	for _, valor in ipairs(integraciones) do
 		M.agregar(require("integraciones." .. valor).obtener(colores))
+	end
+end
+
+M.agregar_lsp = function()
+	local lsps = {
+		"general",
+		"markdown",
+		"java",
+		"http",
+	}
+
+	for _, valor in ipairs(lsps) do
+		M.agregar(require("lsp." .. valor).obtener(colores))
 	end
 end
 
@@ -202,6 +172,8 @@ M.integraciones = {
 	"edgy",
 	"diffview",
 	"lspkind",
+	"outline",
+	"markview",
 }
 
 M.extras = {
@@ -212,6 +184,8 @@ M.establecer = function(configuracion)
 	configuracion = configuracion or {}
 	configuracion.integraciones = configuracion.integraciones or {}
 	configuracion.extras = configuracion.extras or {}
+
+	M.agregar_lsp()
 
 	if #configuracion.integraciones > 0 then
 		M.agregar_integraciones(configuracion.integraciones)

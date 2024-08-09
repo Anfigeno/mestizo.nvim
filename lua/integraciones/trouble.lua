@@ -11,6 +11,9 @@ function M.obtener(colores)
 		TroubleTextInformation = { fg = colores.azul },
 		TroubleTextHint = { fg = colores.verde },
 		TroubleNormal = { fg = colores.tope, bg = colores.base },
+		TroubleIconDirectory = { fg = colores.rosa },
+		TroubleIconField = { fg = colores.celeste },
+		TroubleCount = { bg = colores.humo },
 	}
 end
 

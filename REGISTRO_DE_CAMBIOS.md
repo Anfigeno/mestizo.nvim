@@ -1,5 +1,28 @@
 # Registro de cambios
 
+## [1.4] 09/08/2024
+
+### Integraciones
+
+- Agregado: markview.nvim y outline.nvim.
+- Modificado:
+  - trouble.nvim:
+    - Claves agregadas: TroubleIconField, TroubleIconDirectory y TroubleCount.
+
+### Lsp's
+
+Se han separado las claves de los lenguajes especificos en modulos.
+
+- Agregado: general, HTTP, Java y Markdown.
+
+### Grupos de colores
+
+- Modificado:
+  - DiagnosticError, DiagnosticHint, DiagnosticWarn, DiagnosticInfo: Se ha eliminado el fondo.
+  - Directory: fg = colores.azul -> colores.rojo.
+  - Title: fg = colores.tope -> colores.rojo.
+- Eliminado: Todas las claves de LSP.
+
 ## [1.3] - 31/07/2024
 
 ### Integraciones
