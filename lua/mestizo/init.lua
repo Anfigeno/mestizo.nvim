@@ -1,40 +1,11 @@
 local M = {}
 
----@type Colores
-local colores = {
-	rojo = "#ff5263",
-	verde = "#8eeda1",
-	amarillo = "#ffe780",
-	azul = "#8B93FF",
-	magenta = "#e882ff",
-	cian = "#6ae4fc",
-
-	rosa = "#ff7d81",
-	lima = "#bfed8e",
-	naranja = "#fc9b74",
-	celeste = "#8bb6ff",
-	fucsia = "#e4adff",
-	turquesa = "#6ac6fc",
-
-	luz = "#edeff8",
-	tope = "#bbc3e8",
-	reflejo = "#9ca8da",
-
-	viento = "#818bb3",
-	nube = "#6f779e",
-	vapor = "#565c81",
-	contaminacion = "#434865",
-	humo = "#292c3d",
-
-	base = "#1e1f2a",
-	sombra = "#191b24",
-	vacio = "#111218",
-}
+local colores = require("mestizo.colores")
 
 M.grupos = {
 	CodeBlock = { bg = colores.sombra },
-	Winbar = { fg = colores.sombra, bg = colores.base },
-	WinbarNC = { fg = colores.sombra, bg = colores.base },
+	Winbar = { fg = colores.tope, bg = colores.base },
+	WinbarNC = { fg = colores.tope, bg = colores.base },
 	EndOfBuffer = { fg = colores.base },
 	Boolean = { fg = colores.naranja },
 	NormalFloat = { bg = colores.base },
@@ -125,75 +96,86 @@ M.grupos = {
 	FloatTitle = { fg = colores.rojo, bg = colores.base },
 }
 
-M.agregar = function(diccionario)
+M.agregar_claves = function(diccionario)
 	for clave, valor in pairs(diccionario) do
 		M.grupos[clave] = valor
 	end
 end
 
-M.agregar_integraciones = function(integraciones)
-	for _, valor in ipairs(integraciones) do
-		M.agregar(require("mestizo.integraciones." .. valor).obtener(colores))
-	end
-end
-
-M.agregar_lsp = function()
+local function agregar_claves_de_lsp()
 	local lsps = {
 		"general",
 		"markdown",
 		"java",
 		"http",
+		"html",
 	}
 
 	for _, valor in ipairs(lsps) do
-		M.agregar(require("mestizo.lsp." .. valor).obtener(colores))
+		M.agregar_claves(require("mestizo.lsp." .. valor).obtener(colores))
 	end
 end
 
-M.establecer_extras = function(extras)
-	for _, valor in ipairs(extras) do
-		require("mestizo.extras." .. valor).establecer()
+---@param extras Extras
+local function establecer_extras(extras)
+	for clave, _ in pairs(extras) do
+		require("mestizo.extras." .. clave).establecer()
 	end
 end
 
-M.integraciones = {
-	"bufferline",
-	"cmp",
-	"dashboard",
-	"gitsigns",
-	"navbuddy",
-	"neo_tree",
-	"noice",
-	"notify",
-	"rainbow_delimiters",
-	"telescope",
-	"trouble",
-	"web_devicons",
-	"edgy",
-	"diffview",
-	"lspkind",
-	"outline",
-	"markview",
-}
+---@param integraciones Integraciones
+local function establecer_integraciones(integraciones)
+	if integraciones.todas then
+		integraciones = {
+			cmp = true,
+			edgy = true,
+			navic = true,
+			noice = true,
+			notify = true,
+			lspkind = true,
+			outline = true,
+			trouble = true,
+			diffview = true,
+			gitsigns = true,
+			markview = true,
+			navbuddy = true,
+			neo_tree = true,
+			dashboard = true,
+			telescope = true,
+			symbol_usage = true,
+			web_devicons = true,
+			rainbow_delimiters = true,
+		}
+	end
 
-M.extras = {
-	"barra_minimalista",
-}
+	for clave, _ in pairs(integraciones) do
+		local integracion = require("mestizo.integraciones." .. clave).obtener(colores)
+		M.agregar_claves(integracion)
+	end
+end
 
+---@param integraciones_extra IntegracionesExtra
+local function establecer_integraciones_extra(integraciones_extra)
+	---@param clave string
+	---@param parametros ...
+	for clave, parametros in pairs(integraciones_extra) do
+		local integracion = require("mestizo.integraciones.extra." .. clave).obtener(colores, parametros)
+		M.agregar_claves(integracion)
+	end
+end
+
+---@param configuracion Configuracion
 M.establecer = function(configuracion)
 	configuracion = configuracion or {}
 	configuracion.integraciones = configuracion.integraciones or {}
+	configuracion.integraciones_extra = configuracion.integraciones_extra or {}
 	configuracion.extras = configuracion.extras or {}
 
-	M.agregar_lsp()
+	agregar_claves_de_lsp()
 
-	if #configuracion.integraciones > 0 then
-		M.agregar_integraciones(configuracion.integraciones)
-	end
-
-	if #configuracion.extras > 0 then
-		M.establecer_extras(configuracion.extras)
-	end
+	establecer_integraciones(configuracion.integraciones)
+	establecer_integraciones_extra(configuracion.integraciones_extra)
+	establecer_extras(configuracion.extras)
 
 	vim.cmd.hi("clear")
 	vim.g.colors_name = "mestizo"

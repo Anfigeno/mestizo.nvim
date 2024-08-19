@@ -51,27 +51,28 @@ Mestizo.nvim tiene integraciones para los siguientes plugins:
 - [outline.nvim](https://github.com/hedyhli/outline.nvim)
 - [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
 
-Las cuales se identifican con la siguiente lista
+Las cuales se identifican con la siguiente tabla
 
 ```lua
-M.integraciones = {
-	"bufferline",
-	"cmp",
-	"dashboard",
-	"gitsigns",
-	"navbuddy",
-	"neo_tree",
-	"noice",
-	"notify",
-	"rainbow_delimiters",
-	"telescope",
-	"trouble",
-	"web_devicons",
-	"edgy",
-	"diffview",
-	"lspkind",
-    "outline",
-    "markview",
+integraciones = {
+    cmp = true,
+    edgy = true,
+    navic = true,
+    noice = true,
+    notify = true,
+    lspkind = true,
+    outline = true,
+    trouble = true,
+    diffview = true,
+    gitsigns = true,
+    markview = true,
+    navbuddy = true,
+    neo_tree = true,
+    dashboard = true,
+    telescope = true,
+    symbol_usage = true,
+    web_devicons = true,
+    rainbow_delimiters = true,
 }
 ```
 
@@ -83,7 +84,7 @@ Y puedes añadir las integraciones que quieras de la siguiente forma
     config = function()
         require("mestizo").establecer({
             integraciones = {
-                "bufferline",
+                bufferline = true,
                 -- Y las demás integraciones que quieras
             }
         })
@@ -97,48 +98,43 @@ O puedes activar todas las integraciones
 {
     "Anfigeno/mestizo.nvim",
     config = function()
-        local mestizo = require("mestizo")
-
-        mestizo.establecer({
-            integraciones = mestizo.integraciones,
+        require("mestizo").establecer({
+            todas = true,
         })
     end
 }
 ```
 
-## Extras
+## Integracioens extra
 
-Este tema viene un extra, el cual hace que la barra de estado desaparezca y se vea minimalista cuando sea visible. Los extras se identifican con la siguiente lista:
+Este tema viene con una integración extra, la cual modifica todos los iconos de `bufferline.nvim` para que tengan el mismo color principal y de fondo. El color principal por defecto es `base`, y el color de fondo por defecto es `rojo`. Pero puedes usar los colores de la paleta `mestizo` que quieras.
 
 ```lua
-M.extras {
-    "barra_minimalista",
+integraciones_extra = {
+  bufferline_iconos = true -- true|false|{ color_principal: string, color_de_fondo: string }
 }
 ```
 
-Puede añadir el extra usando su strint
+## Extras
+
+Este tema viene un extra, el cual hace que la barra de estado desaparezca y se vea minimalista cuando sea visible. Los extras se identifican con la siguiente tabla:
+
+```lua
+extras {
+    barra_minimalista = true,
+}
+```
+
+Puede añadir el extra así:
 
 ```lua
 {
     "Anfigeno/mestizo.nvim",
     config = function()
         require("mestizo").establecer({
-            extras = "barra_minimalista"
-        })
-    end
-}
-```
-
-O puede añadir todos los extras, usando la tabla de extras.
-
-```lua
-{
-    "Anfigeno/mestizo.nvim",
-    config = function()
-        local mestizo = require("mestizo")
-
-        mestizo.establecer({
-            extras = mestizo.extras
+            extras = {
+                barra_minimalista = true,
+            },
         })
     end
 }

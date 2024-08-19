@@ -24,7 +24,7 @@ function M.obtener(colores)
 	for i = 1, 6, 1 do
 		local mezcla = util.mezclar_colores(colores.magenta, colores.azul, factorDeMezcla[i])
 
-		grupos["@markup.heading." .. i] = {
+		grupos["@markup.heading." .. i .. ".markdown"] = {
 			fg = mezcla,
 			bg = util.mezclar_colores(colores.base, mezcla, 0.1),
 		}

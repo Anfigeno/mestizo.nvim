@@ -1,5 +1,42 @@
 # Registro de cambios
 
+## [1.6] 19/08/2024
+
+### Archivos
+
+- `lua/mestizo/`:
+  - `init.lua`:
+    - Agregado:
+      - Función local `establecer_integraciones_extra`
+    - Modificado:
+      - Método `agregar` -> `agregar_claves`.
+      - Método `agregar_lsp` -> función local `agregar_claves_de_lsp`.
+      - Método `establecer_extras` -> función local.
+      - Método `agregar_integraciones` -> función local `establecer_integraciones`.
+    - Eliminado:
+      - Variable `colores`.
+      - Propiedades `integraciones`, `extras`.
+  - `types.lua`:
+    - Agregado:
+      - Clases: `Configuracion`, `Integraciones`, `IntegracionesExtra` y `Extras`.
+
+### Integraciones
+
+- Agregado: nvim-navic y symbol-usage.nvim.
+- Modificado:
+  - bufferline: Se ha movido de `lua/mestizo/integraciones` a `lua/mestizo/integraciones/especial` y se ha modificado para que funcione con la opcion `highlights` de bufferline.
+
+### Integraciones especiales
+
+- Agregado:
+  - bufferline-iconos: Permite cambiar el color principal y de fondo de los iconos de bufferline.
+
+### Lsp's
+
+- Agregado: HTML.
+- Modificado:
+  - Markdown: La asignación de colores automática solo afecta a los archivos markdown.
+
 ## [1.5] 09/08/2024
 
 ### Estructura de archivos

@@ -21,3 +21,35 @@
 ---@field base string
 ---@field sombra string
 ---@field vacio string
+
+---@class Integraciones
+---@field todas boolean|nil
+---@field cmp boolean|nil
+---@field dashboard boolean|nil
+---@field gitsigns boolean|nil
+---@field navbuddy boolean|nil
+---@field neo_tree boolean|nil
+---@field noice boolean|nil
+---@field notify boolean|nil
+---@field rainbow_delimiters boolean|nil
+---@field telescope boolean|nil
+---@field trouble boolean|nil
+---@field web_devicons boolean|nil
+---@field edgy boolean|nil
+---@field diffview boolean|nil
+---@field lspkind boolean|nil
+---@field outline boolean|nil
+---@field markview boolean|nil
+---@field symbol_usage boolean|nil
+---@field navic boolean|nil
+
+---@class IntegracionesExtra
+---@field bufferline_iconos boolean|...|nil
+
+---@class Extras
+---@field barra_minimalista boolean|nil
+
+---@class Configuracion
+---@field integraciones Integraciones
+---@field integraciones_extra IntegracionesExtra
+---@field extras Extras
