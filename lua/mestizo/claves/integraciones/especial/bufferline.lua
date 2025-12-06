@@ -1,7 +1,7 @@
 local colores = require("mestizo.paleta")
 
-local fondo_de_pestana_activa = colores.base
-local fondo_de_pestana_inactiva = colores.base_1
+local fondo_de_pestana_activa = colores.base2
+local fondo_de_pestana_inactiva = colores.base
 
 return {
 	background = { fg = colores.tope_2, bg = fondo_de_pestana_inactiva },

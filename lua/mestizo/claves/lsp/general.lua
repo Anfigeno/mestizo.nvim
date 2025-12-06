@@ -3,7 +3,7 @@ local M = {}
 ---@param colores Paleta
 function M.crear(colores)
   return {
-    ["@variable"] = { fg = "NONE" },
+    ["@variable"] = { fg = colores.tope },
     ["@variable.parameter"] = { fg = colores.rosa, nocombine = true },
     ["@variable.builtin"] = { fg = colores.rojo },
     ["@function.call"] = { fg = colores.azul },

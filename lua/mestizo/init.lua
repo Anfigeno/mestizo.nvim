@@ -16,6 +16,7 @@ local function agregar_claves_de_lsp()
 	local integraciones_de_lsp = {
 		"general",
 		"go",
+    "lua"
 	}
 
 	for _, integracion in ipairs(integraciones_de_lsp) do
@@ -44,6 +45,7 @@ local function agregar_integraciones()
 		"symbol-usage",
 		"dap-ui",
 		"edgy",
+    "fyler"
 	}
 
 	for _, integracion in ipairs(integraciones) do
