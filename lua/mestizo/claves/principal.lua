@@ -39,7 +39,7 @@ M.crear = function(colores)
 		WinBar = { fg = colores.tope, bg = colores.base },
 		WinBarNC = { fg = colores.tope, bg = colores.base },
 		EndOfBuffer = { fg = colores.base },
-		Directory = { fg = colores.rosa },
+		Directory = { fg = colores.rojo, bold = true },
 		CursorLine = { bg = colores.base1 },
 		Visual = { bg = colores.base2 },
 
